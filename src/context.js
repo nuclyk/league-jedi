@@ -1,7 +1,7 @@
 import React, { useContext, useReducer, useEffect } from 'react'
+import axios from 'axios'
 import reducer from './utils/reducer'
-
-const API_ENDPOINT = ''
+import riotFetch from './axios/custom'
 
 const AppContext = React.createContext()
 
@@ -17,7 +17,20 @@ const initialState = {
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const fetchSummoner = (name) => {}
+  const fetchSummoner = async (name) => {
+    try {
+      const url = `/summoner/v4/summoners/by-name/zyb?api_key=${process.env.REACT_APP_RIOT_KEY}`
+      const response = await riotFetch(url)
+      const { data } = response
+      console.log(data)
+    } catch (error) {
+      console.log(error.Rsponse)
+    }
+  }
+
+  useEffect(() => {
+    fetchSummoner()
+  }, [])
 
   const fetchMatches = () => {}
 
