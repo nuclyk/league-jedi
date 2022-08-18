@@ -74,7 +74,6 @@ img {
   display: flex;
   flex-direction: column;
   width: 800px;
-  height: 100vw;
   margin: 1rem auto;
 }
 

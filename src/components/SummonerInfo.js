@@ -1,14 +1,16 @@
 import React from 'react'
+import { useGlobalContext } from '../context'
 import profileIcon from '../img/profile-icon.png'
 import rankIcon from '../img/rank-icon.png'
 
 const SummonerInfo = () => {
+  const { summoner } = useGlobalContext()
   return (
     <section className='section summoner-info'>
       <article className='primary-info'>
         <img src={profileIcon} className='profile-image' alt='' />
         <div className='summoner'>
-          <h1>zyb</h1>
+          <h1>{summoner && summoner.name}</h1>
           <p>Ladder Rank 2</p>
         </div>
       </article>

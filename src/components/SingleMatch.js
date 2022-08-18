@@ -1,14 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useGlobalContext } from '../context'
 import * as img from '../utils/images'
 
-const SingleMatch = () => {
+const SingleMatch = ({
+  gameId,
+  gameDuration,
+  gameType,
+  gameCreation,
+  gameEndTimestamp,
+  participants,
+  teamId,
+  teamWin,
+  player,
+}) => {
+  const team1 = participants.filter((player) => player.teamId === 100)
+  const team2 = participants.filter((player) => player.teamId === 200)
+
   return (
-    <article className='match victory'>
+    <article className={`${player.win ? 'match victory' : 'match loss'}`}>
       <div className='match-result'>
-        <h4 className='match-type'>Ranked Solo</h4>
+        <h4>Ranked Solo</h4>
         <p>2 days ago</p>
         <div className='underline'></div>
-        <p className='success'>Victory</p>
+        <p className='success'>{player.win ? 'Victory' : 'Defeat'}</p>
         <p>22 min 57 sec</p>
       </div>
       <div className='player'>
@@ -40,48 +54,24 @@ const SingleMatch = () => {
       </div>
       <div className='match-players'>
         <div className='team-1'>
-          <p>
-            <img src={img.champIconSmall1} alt='' />
-            Player name 1
-          </p>
-          <p>
-            <img src={img.champIconSmall2} alt='' />
-            Player name 1
-          </p>
-          <p>
-            <img src={img.champIconSmall3} alt='' />
-            Player name 1
-          </p>
-          <p>
-            <img src={img.champIconSmall4} alt='' />
-            Player name 1
-          </p>
-          <p>
-            <img src={img.champIconSmall5} alt='' />
-            Player name 1
-          </p>
+          {team1.map((player) => {
+            return (
+              <p>
+                <img src={img.champIconSmall1} alt='' />
+                {player.summonerName}
+              </p>
+            )
+          })}
         </div>
         <div className='team-2'>
-          <p>
-            <img src={img.champIconSmall1} alt='' />
-            Player name 1
-          </p>
-          <p>
-            <img src={img.champIconSmall2} alt='' />
-            Player name 1
-          </p>
-          <p>
-            <img src={img.champIconSmall3} alt='' />
-            Player name 1
-          </p>
-          <p>
-            <img src={img.champIconSmall4} alt='' />
-            Player name 1
-          </p>
-          <p>
-            <img src={img.champIconSmall5} alt='' />
-            Player name 1
-          </p>
+          {team2.map((player) => {
+            return (
+              <p>
+                <img src={img.champIconSmall1} alt='' />
+                {player.summonerName}
+              </p>
+            )
+          })}
         </div>
       </div>
     </article>
