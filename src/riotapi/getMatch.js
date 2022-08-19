@@ -49,7 +49,8 @@ export const getMatch = async (matchId) => {
         neutralMinionsKilled,
         totalMinionsKilled,
         summoner1Id,
-        summoner2Id
+        summoner2Id,
+        perks
       } = item
 
       participants.push({
@@ -86,7 +87,8 @@ export const getMatch = async (matchId) => {
         assists,
         neutralMinionsKilled,
         summoner1Id,
-        summoner2Id
+        summoner2Id,
+        perks
       })
     })
 

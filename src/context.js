@@ -11,7 +11,7 @@ import reducer from './utils/reducer'
 import { getSummonerByName } from './riotapi/getSummonerByName'
 import { getMatches } from './riotapi/getMatches'
 import { getMatch } from './riotapi/getMatch'
-import { getChampion, getChampionImg, getSummoner } from './riotapi/ddragon'
+import { getChampion, getChampionImg, getRunesImages, getSummoner } from './riotapi/ddragon'
 import { getLeague } from './riotapi/getLeague'
 
 const AppContext = React.createContext()
@@ -24,7 +24,7 @@ const initialState = {
   matches: [],
   match: [],
 }
-
+getRunesImages(8200, 8230)
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 

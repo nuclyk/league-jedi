@@ -164,6 +164,7 @@ img {
   margin: 0.2rem 0;
   column-gap: 1rem;
   border: var(--border);
+  text-align: center;
 }
 
 .match .match-type {
@@ -178,6 +179,7 @@ img {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  text-align: left;
 }
 
 .player-spells {
@@ -207,6 +209,7 @@ img {
   display: flex;
   gap: 1rem;
   line-height: 2;
+  text-align: left;
 }
 .match-players img {
   width: 20px;

@@ -5,6 +5,9 @@ import rankIcon from '../img/rank-icon.png'
 
 const SummonerInfo = () => {
   const { summoner } = useGlobalContext()
+  const totalMatches = summoner.wins + summoner.losses
+  const winRate = Math.floor((100 * summoner.wins) / totalMatches)
+
   return (
     <section className='section summoner-info'>
       <article className='primary-info'>
@@ -19,10 +22,10 @@ const SummonerInfo = () => {
           <img src={rankIcon} alt='' />
         </div>
         <div className='rank-info'>
-          <h2 className='rank-name'>Challenger</h2>
-          <p>1,666LP</p>
-          <p>227W 132L</p>
-          <p>Win Rate 63%</p>
+          <h2 className='rank-name'>{summoner.tier}</h2>
+          <p>{summoner.leaguePoints} LP</p>
+          <p>{summoner.wins}W {summoner.losses}L</p>
+          <p>Win Rate {winRate}%</p>
         </div>
       </article>
     </section>

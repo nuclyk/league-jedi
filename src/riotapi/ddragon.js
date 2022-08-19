@@ -6,6 +6,26 @@ const summonerImgURL = `http://ddragon.leagueoflegends.com/cdn/12.15.1/img/spell
 const championImgURL = `http://ddragon.leagueoflegends.com/cdn/12.15.1/img/champion/`
 const itemImgURL = `https://ddragon.leagueoflegends.com/cdn/12.15.1/img/item/`
 const profileIcon = `https://ddragon.leagueoflegends.com/cdn/12.15.1/img/profileicon/`
+const runesURL = `https://ddragon.leagueoflegends.com/cdn/12.15.1/data/en_US/runesReforged.json`
+const runeImgURL = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/`
+
+export const getRunesImages = async (styleId, perkId) => {
+  const response = await axios(runesURL)
+  const runes = response.data
+  const style = runes.find((style) => style.id === styleId)
+
+  if (perkId) {
+    const rune = style.slots[0].runes.find((perk) => perk.id === perkId)
+    const icon = rune.icon.toLowerCase()
+    const iconURL = `${runeImgURL}${icon}`
+    return iconURL
+  } else {
+    const icon = style.icon.toLowerCase()
+    const iconURL = `${runeImgURL}${icon}`
+    console.log(iconURL)
+    return iconURL
+  }
+}
 
 export const getChampion = async (name) => {
   try {
