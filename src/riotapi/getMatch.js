@@ -40,7 +40,16 @@ export const getMatch = async (matchId) => {
         turretKills,
         wardsPlaced,
         win,
-        challenges: { kda, killParticipation },
+        assists,
+        challenges: {
+          kda,
+          killParticipation,
+          controlWardsPlaced,
+        },
+        neutralMinionsKilled,
+        totalMinionsKilled,
+        summoner1Id,
+        summoner2Id
       } = item
 
       participants.push({
@@ -72,6 +81,12 @@ export const getMatch = async (matchId) => {
         win,
         kda,
         killParticipation,
+        totalMinionsKilled,
+        controlWardsPlaced,
+        assists,
+        neutralMinionsKilled,
+        summoner1Id,
+        summoner2Id
       })
     })
 
